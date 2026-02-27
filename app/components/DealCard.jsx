@@ -12,7 +12,7 @@ export default function DealCard({ deal }) {
     const API_BASE = `${process.env.NEXT_PUBLIC_API_URL}`;
 
     return (
-        <div className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+        <div className="group bg-neutral-900 rounded-2xl border border-neutral-800 hover:border-green-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-green-500/10 transition-all duration-300 overflow-hidden flex flex-col">
 
             {/* Imagen */}
             <img
@@ -22,40 +22,35 @@ export default function DealCard({ deal }) {
             />
 
             {/* Contenido */}
-            <div className="p-4 flex flex-col flex-1">
+            <div className="p-5 flex flex-col flex-1">
 
-                {/* Título */}
-                <h2 className="font-semibold text-sm line-clamp-2 mb-2">
+                <h2 className="font-semibold text-md line-clamp-2 mb-3 text-white">
                     {deal.title}
                 </h2>
 
-                {/* Precios */}
-                <div className="flex items-center gap-2 mb-2">
-                    <span className="text-gray-400 line-through text-sm">
+                <div className="flex items-center gap-2 mb-3">
+                    <span className="text-neutral-500 line-through text-sm">
                         {deal.originalPrice}€
                     </span>
-                    <span className="text-green-600 font-bold text-lg">
+                    <span className="text-green-500 font-bold text-lg">
                         {deal.price}€
                     </span>
                 </div>
 
-                {/* Descuento */}
                 {discount > 0 && (
-                    <span className="self-start inline-flex items-center bg-red-100 text-red-600 text-xs font-semibold px-2 py-1 rounded mb-4">
+                    <span className="self-start text-xs font-bold px-3 py-1 rounded-md mb-4 bg-red-600/20 text-red-400 shadow-sm shadow-red-500/30">
                         -{discount}%
                     </span>
                 )}
 
-                {/* Botón */}
                 <a
                     href={`${API_BASE}/r/${deal.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-auto block text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold"
+                    className="mt-auto block text-center bg-green-500 hover:bg-green-400 text-black py-2 rounded-xl font-semibold transition-all duration-200 hover:scale-105 active:scale-95"
                 >
                     Comprar ahora
                 </a>
-
             </div>
         </div>
     );

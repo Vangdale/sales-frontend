@@ -23,13 +23,20 @@ export default async function DealsPage() {
     const deals = await getDeals();
 
     return (
-        <main className="p-6 max-w-5xl mx-auto">
-            <h1 className="text-3xl font-bold mb-6">Ofertas disponibles</h1>
+        <main className="min-h-screen bg-black text-white px-6 py-12">
+            <div className="max-w-6xl mx-auto">
+                <h1 className="text-4xl font-bold mb-10">
+                    Ofertas disponibles
+                </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {deals.map((deal) => (
-                    <DealCard key={deal.id} deal={deal} />
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {deals.map((deal) => (
+
+                        <DealCard key={deal.id} deal={deal} />
+
+
+                    ))}
+                </div>
             </div>
         </main>
     );

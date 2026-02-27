@@ -27,7 +27,7 @@ export default function Home() {
                 <br />
 
                 <Link
-                    href="/deals"
+                    href="/ofertas-pc-semana"
                     className="inline-block px-10 py-5 bg-green-500 hover:bg-green-400 text-black font-bold rounded-2xl text-lg transition duration-200 shadow-lg shadow-green-500/30 hover:scale-105"
                 >
                     🔥 Ver ofertas ahora

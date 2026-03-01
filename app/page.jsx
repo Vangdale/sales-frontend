@@ -17,7 +17,7 @@ export default function Home() {
                 </h1>
 
 
-                
+
                 <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
                     Comparamos precios automáticamente para que siempre compres al mínimo.
                     Sin perder tiempo. Sin pagar de más.
@@ -34,6 +34,69 @@ export default function Home() {
                 </Link>
             </section>
 
+            {/* CATEGORÍAS DESTACADAS */}
+            <section className="relative mt-24 max-w-6xl w-full space-y-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-center">
+                    Explora las mejores ofertas
+                </h2>
+
+                <div className="grid md:grid-cols-3 gap-6">
+
+                    <Link
+                        href="/juegos-menos-de-5-euros"
+                        className="bg-neutral-900 p-6 rounded-2xl border border-neutral-800 hover:border-green-500 transition duration-200"
+                    >
+                        <h3 className="text-xl font-semibold mb-2 text-green-500">
+                            Juegos por menos de 5€ →
+                        </h3>
+                        <p className="text-neutral-400">
+                            Auténticos chollos actualizados diariamente.
+                        </p>
+                    </Link>
+
+                    <Link
+                        href="/ofertas-pc-semana"
+                        className="bg-neutral-900 p-6 rounded-2xl border border-neutral-800 hover:border-green-500 transition duration-200"
+                    >
+                        <h3 className="text-xl font-semibold mb-2">
+                            Ofertas PC de la semana →
+                        </h3>
+                        <p className="text-neutral-400">
+                            Los descuentos más fuertes del momento.
+                        </p>
+                    </Link>
+
+                    <Link
+                        href="/juegos-menos-de-10-euros"
+                        className="bg-neutral-900 p-6 rounded-2xl border border-neutral-800 hover:border-green-500 transition duration-200"
+                    >
+                        <h3 className="text-xl font-semibold mb-2">
+                            Juegos por menos de 10€ →
+                        </h3>
+                        <p className="text-neutral-400">
+                            Grandes títulos a precio reducido.
+                        </p>
+                    </Link>
+
+                </div>
+            </section>
+
+            <br />
+            <br />
+            <br />
+
+            {/* JUEGOS DESTACADOS */}
+            <section className="relative mt-28 max-w-6xl w-full space-y-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-center">
+                    Juegos en oferta ahora mismo
+                </h2>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                    {/* Aquí luego meterás tus cards dinámicas */}
+                </div>
+            </section>
+
+            <br />
             <br />
             <br />
             <br />
@@ -72,6 +135,26 @@ export default function Home() {
             </section>
 
             {/* CTA FINAL */}
+
+            {/* TEXTO SEO */}
+            <section className="relative mt-32 max-w-4xl text-neutral-400 space-y-6 text-sm leading-relaxed">
+                <h2 className="text-2xl font-bold text-white">
+                    Las mejores ofertas de videojuegos para PC
+                </h2>
+
+                <p>
+                    En OfertasVideojuegos recopilamos diariamente las mejores ofertas
+                    de videojuegos para PC en tiendas verificadas. Nuestro sistema
+                    compara precios automáticamente para que encuentres siempre el
+                    descuento más alto disponible.
+                </p>
+
+                <p>
+                    Desde juegos por menos de 5€ hasta grandes rebajas en títulos AAA,
+                    aquí encontrarás oportunidades actualizadas constantemente.
+                </p>
+            </section>
+            
             <br />
             <br />
             <br />

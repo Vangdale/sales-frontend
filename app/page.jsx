@@ -1,6 +1,27 @@
 import Link from "next/link";
+import MetacriticCarousel from "./components/MetacriticCarousel";
+import './css/embla.css'
 
-export default function Home() {
+
+const OPTIONS = { dragFree: true, loop: true }
+
+async function getHomeData() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/home`, {
+        next: { revalidate: 60 },
+    });
+
+    if (!res.ok) {
+        throw new Error("Error fetching deals");
+    }
+
+    return res.json();
+}
+
+export default async function Home() {
+
+    const data = await getHomeData();
+
+
     return (
         <main className="min-h-screen bg-black text-white flex flex-col items-center px-6 relative overflow-hidden">
 
@@ -90,10 +111,8 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl font-bold text-center">
                     Juegos en oferta ahora mismo
                 </h2>
-
-                <div className="grid md:grid-cols-3 gap-6">
-                    {/* Aquí luego meterás tus cards dinámicas */}
-                </div>
+                
+                <MetacriticCarousel games={data.topMetacritic} options={OPTIONS}/> 
             </section>
 
             <br />

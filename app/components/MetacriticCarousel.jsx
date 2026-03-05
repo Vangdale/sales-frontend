@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
 import DealCard from "./DealCard";
+
+
 
 const MetacriticCarousel = (props) => {
     const { games, options } = props
@@ -17,7 +19,8 @@ const MetacriticCarousel = (props) => {
         autoplay.play()
     }, [emblaApi])
 
-    return (    
+
+    return (
         <section className="embla">
             <div className="embla__viewport" ref={emblaRef}>
                 <div className="embla__container">
@@ -30,6 +33,7 @@ const MetacriticCarousel = (props) => {
                     ))}
                 </div>
             </div>
+
         </section>
     )
 }

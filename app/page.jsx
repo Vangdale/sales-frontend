@@ -88,7 +88,7 @@ export default async function Home() {
                     </Link>
 
                     <Link
-                        href="/juegos-menos-de-10-euros"
+                        href=""
                         className="bg-neutral-900 p-6 rounded-2xl border border-neutral-800 hover:border-green-500 transition duration-200"
                     >
                         <h3 className="text-xl font-semibold mb-2">
@@ -109,7 +109,7 @@ export default async function Home() {
             {/* JUEGOS DESTACADOS */}
             <section className="relative mt-28 max-w-6xl w-full space-y-10">
                 <h2 className="text-3xl md:text-4xl font-bold text-center">
-                    Juegos en oferta ahora mismo
+                    Los mejores juegos de pc en oferta ahora mismo
                 </h2>
                 
                 <MetacriticCarousel games={data.topMetacritic} options={OPTIONS}/> 

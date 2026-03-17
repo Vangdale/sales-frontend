@@ -37,9 +37,9 @@ export default async function JuegosBaratos() {
                 </p>
 
                 {/* GRID DE OFERTAS */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 auto-rows-fr">
                     {deals.map((deal) => (
-                        <DealCard key={deal.id} deal={deal} />
+                        <DealCard key={deal.game_id} deal={deal} />
                     ))}
                 </div>
 

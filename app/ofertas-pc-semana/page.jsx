@@ -3,7 +3,7 @@
 import DealCard from "../components/DealCard";
 
 async function getDeals() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/deals`, {
+    const res = await fetch(`${process.env.NEXT_TEST_API_URL}/api/deals`, {
         next: { revalidate: 60 },
     });
 

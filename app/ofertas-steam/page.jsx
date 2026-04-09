@@ -1,21 +1,22 @@
+// app/ofertas-pc-semana/page.jsx
+
 import DealCard from "../components/DealCard";
 
 async function getDeals() {
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/deals?maxPrice=5`,
-        { next: { revalidate: 60 } }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/deals?store=1`, {
+        next: { revalidate: 60 },
+    });
     if (!res.ok) throw new Error("Error fetching deals");
     return res.json();
 }
 
 export const metadata = {
-    title: "Juegos PC por menos de 5€ | Mejores ofertas y chollos Steam hoy",
+    title: "Ofertas PC esta semana | Mejores descuentos en juegos ahora mismo",
     description:
-        "Encuentra los mejores juegos de PC por menos de 5€ con descuentos de hasta el 95%. Ofertas actualizadas automáticamente desde Steam y tiendas verificadas.",
+        "Las mejores ofertas de juegos para PC actualizadas esta semana. Descuentos de hasta el 90% en Steam y tiendas verificadas. Compara precios automáticamente.",
 };
 
-export default async function JuegosBaratos() {
+export default async function OfertasPCSemana() {
     const deals = await getDeals();
 
     return (
@@ -43,7 +44,7 @@ export default async function JuegosBaratos() {
                     <ol style={{ display: "flex", alignItems: "center", gap: 8, listStyle: "none", padding: 0, margin: 0 }}>
                         <li><a href="/" style={{ color: "rgba(255,255,255,0.35)", fontSize: 13, textDecoration: "none" }}>Inicio</a></li>
                         <li style={{ color: "rgba(255,255,255,0.2)", fontSize: 13 }}>›</li>
-                        <li style={{ color: "#34d399", fontSize: 13, fontWeight: 600 }}>Juegos por menos de 5€</li>
+                        <li style={{ color: "#34d399", fontSize: 13, fontWeight: 600 }}>Ofertas PC esta semana</li>
                     </ol>
                 </nav>
 
@@ -64,7 +65,7 @@ export default async function JuegosBaratos() {
                             background: "#34d399", display: "inline-block",
                             animation: "pulse 2s infinite",
                         }} />
-                        {deals.length} ofertas disponibles ahora
+                        {deals.length} ofertas activas ahora mismo
                     </div>
 
                     <h1 style={{
@@ -74,9 +75,9 @@ export default async function JuegosBaratos() {
                         letterSpacing: "-0.02em",
                         margin: "0 0 16px",
                     }}>
-                        Juegos por{" "}
+                        Ofertas Steam{" "}
                         <span style={{ color: "#34d399", textShadow: "0 0 40px rgba(16,185,129,0.3)" }}>
-                            menos de 5€
+                            esta semana
                         </span>
                     </h1>
 
@@ -87,16 +88,17 @@ export default async function JuegosBaratos() {
                         maxWidth: 580,
                         margin: 0,
                     }}>
-                        Las mejores ofertas de juegos PC actualizadas automáticamente.
-                        Descuentos reales de hasta el 95% en tiendas verificadas.
+                        Los mejores descuentos en juegos para PC actualizados automáticamente.
+                        Comparamos precios en Steam y más de 15 tiendas verificadas para que
+                        nunca pagues de más.
                     </p>
 
                     {/* Stats inline */}
                     <div style={{ display: "flex", gap: 24, marginTop: 24, flexWrap: "wrap" }}>
                         {[
-                            { value: `${deals.length}`, label: "juegos disponibles" },
-                            { value: "Hoy", label: "última actualización" },
-                            { value: "15+", label: "tiendas comparadas" },
+                            { value: `${deals.length}`, label: "juegos en oferta" },
+                            { value: "Esta semana", label: "última actualización" },
+                            
                         ].map(({ value, label }) => (
                             <div key={label} style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
                                 <span style={{ color: "#34d399", fontWeight: 900, fontSize: 18 }}>{value}</span>
@@ -106,7 +108,7 @@ export default async function JuegosBaratos() {
                     </div>
                 </header>
 
-                {/* ── Grid de ofertas — 4 columnas ── */}
+                {/* ── Grid 4 columnas ── */}
                 <div style={{
                     display: "grid",
                     gridTemplateColumns: "repeat(4, 1fr)",
@@ -119,7 +121,7 @@ export default async function JuegosBaratos() {
 
                 {/* ── SEO / FAQ ── */}
                 <section
-                    aria-label="Preguntas frecuentes sobre juegos baratos"
+                    aria-label="Preguntas frecuentes sobre ofertas de juegos PC"
                     style={{
                         marginTop: 80,
                         paddingTop: 48,
@@ -127,7 +129,7 @@ export default async function JuegosBaratos() {
                         maxWidth: 760,
                     }}
                 >
-                    {/* FAQ Schema markup */}
+                    {/* FAQ Schema JSON-LD */}
                     <script
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -136,26 +138,26 @@ export default async function JuegosBaratos() {
                             "mainEntity": [
                                 {
                                     "@type": "Question",
-                                    "name": "¿Dónde comprar juegos de PC por menos de 5€?",
+                                    "name": "¿Cómo funcionan las ofertas semanales de juegos PC?",
                                     "acceptedAnswer": {
                                         "@type": "Answer",
-                                        "text": "Puedes encontrar juegos de PC por menos de 5€ en tiendas digitales como Steam, Fanatical, GOG y Humble Store durante sus promociones y rebajas de temporada. En OfertasVideojuegos comparamos precios automáticamente para mostrarte siempre el descuento más alto disponible.",
+                                        "text": "Las tiendas digitales como Steam, Fanatical o Humble Store publican descuentos temporales cada semana. En OfertasVideojuegos monitorizamos estos precios automáticamente y te mostramos siempre el mejor precio disponible sin que tengas que revisar cada tienda.",
                                     },
                                 },
                                 {
                                     "@type": "Question",
-                                    "name": "¿Son legales los juegos de PC por menos de 5€?",
+                                    "name": "¿Con qué frecuencia se actualizan los precios?",
                                     "acceptedAnswer": {
                                         "@type": "Answer",
-                                        "text": "Sí. Todas las ofertas que mostramos provienen de tiendas oficiales y verificadas que distribuyen licencias legales. Los precios bajos se deben a promociones temporales, no a reventa no autorizada.",
+                                        "text": "Los precios se actualizan automáticamente varias veces al día para reflejar cambios en descuentos, promociones flash o nuevas campañas semanales.",
                                     },
                                 },
                                 {
                                     "@type": "Question",
-                                    "name": "¿Cada cuánto se actualizan las ofertas?",
+                                    "name": "¿Cuáles son las mejores épocas para comprar juegos de PC baratos?",
                                     "acceptedAnswer": {
                                         "@type": "Answer",
-                                        "text": "Los precios se actualizan automáticamente varias veces al día para que siempre veas los descuentos más recientes.",
+                                        "text": "Las rebajas más grandes suelen ocurrir durante el Steam Summer Sale (junio-julio), el Steam Winter Sale (diciembre-enero), el Black Friday y el Steam Autumn Sale (noviembre). Fuera de estas fechas, muchas tiendas ofrecen descuentos semanales de hasta el 90%.",
                                     },
                                 },
                             ],
@@ -163,42 +165,44 @@ export default async function JuegosBaratos() {
                     />
 
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: "rgba(255,255,255,0.85)", marginBottom: 12, marginTop: 0, letterSpacing: "-0.01em" }}>
-                        ¿Dónde comprar juegos de PC por menos de 5€?
+                        ¿Cómo funcionan las ofertas semanales de juegos para PC?
                     </h2>
                     <p style={{ color: "rgba(255,255,255,0.38)", fontSize: 14, lineHeight: 1.8, marginBottom: 32, marginTop: 0 }}>
-                        Las tiendas digitales como Steam, Fanatical o GOG lanzan promociones frecuentes donde
-                        juegos populares bajan de precio de forma temporal. Durante rebajas de temporada o
-                        promociones semanales es habitual encontrar títulos muy conocidos por menos de cinco euros.
-                        En OfertasVideojuegos comparamos precios en tiempo real para que no tengas que revisar
-                        cada tienda manualmente.
+                        Las tiendas digitales como Steam, Fanatical o Humble Store publican descuentos nuevos
+                        cada semana, a veces coincidiendo con lanzamientos o eventos especiales. Los descuentos
+                        pueden llegar al 90% en títulos populares. En OfertasVideojuegos monitorizamos estos
+                        precios de forma automática para que siempre veas el mejor precio disponible sin tener
+                        que revisar cada tienda manualmente.
                     </p>
 
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: "rgba(255,255,255,0.85)", marginBottom: 12, marginTop: 0, letterSpacing: "-0.01em" }}>
-                        ¿Son legales estos juegos tan baratos?
+                        ¿Cuáles son las mejores épocas para comprar juegos de PC baratos?
                     </h2>
                     <p style={{ color: "rgba(255,255,255,0.38)", fontSize: 14, lineHeight: 1.8, marginBottom: 32, marginTop: 0 }}>
-                        Sí. Todas las ofertas que mostramos provienen de tiendas oficiales y verificadas que
-                        distribuyen licencias legales de los juegos. Los precios bajos se deben a promociones
-                        temporales de los propios editores, no a reventa ni claves de origen dudoso.
+                        Las rebajas más grandes del año suelen ocurrir durante el <strong style={{ color: "rgba(255,255,255,0.6)" }}>Steam Summer Sale</strong> (junio-julio),
+                        el <strong style={{ color: "rgba(255,255,255,0.6)" }}>Steam Winter Sale</strong> (diciembre-enero),
+                        el <strong style={{ color: "rgba(255,255,255,0.6)" }}>Black Friday</strong> (noviembre) y
+                        el <strong style={{ color: "rgba(255,255,255,0.6)" }}>Steam Autumn Sale</strong>. Fuera de estas fechas,
+                        muchas tiendas mantienen ofertas semanales con descuentos de hasta el 90% en títulos AAA e indie.
                     </p>
 
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: "rgba(255,255,255,0.85)", marginBottom: 12, marginTop: 0, letterSpacing: "-0.01em" }}>
-                        Ventajas de comprar juegos baratos en PC
+                        Consejos para sacar el máximo partido a las ofertas
                     </h2>
                     <ul style={{ color: "rgba(255,255,255,0.38)", fontSize: 14, lineHeight: 2, paddingLeft: 20, marginBottom: 32, marginTop: 0 }}>
-                        <li>Probar géneros nuevos sin arriesgar mucho dinero.</li>
-                        <li>Ampliar tu biblioteca de Steam con títulos AAA rebajados.</li>
-                        <li>Descubrir joyas indie que de otro modo pasarías por alto.</li>
-                        <li>Aprovechar ofertas temporales antes de que suban de precio.</li>
+                        <li>Revisa esta página al inicio de la semana — los mejores descuentos aparecen los lunes.</li>
+                        <li>Fíjate en el score de Metacritic junto al precio para elegir calidad garantizada.</li>
+                        <li>Compara el descuento actual con el precio histórico antes de comprar.</li>
+                        <li>Añade esta página a favoritos para no perderte ninguna oferta flash.</li>
                     </ul>
 
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: "rgba(255,255,255,0.85)", marginBottom: 12, marginTop: 0, letterSpacing: "-0.01em" }}>
-                        ¿Cada cuánto se actualizan estas ofertas?
+                        ¿Con qué frecuencia se actualizan los precios?
                     </h2>
                     <p style={{ color: "rgba(255,255,255,0.38)", fontSize: 14, lineHeight: 1.8, marginTop: 0, marginBottom: 0 }}>
-                        Los precios se actualizan automáticamente varias veces al día. Así siempre ves los
-                        descuentos más recientes y evitas pagar de más por un juego que ya está de oferta
-                        en otra tienda.
+                        Los precios se actualizan automáticamente varias veces al día para reflejar cambios
+                        en descuentos, promociones flash o nuevas campañas semanales. Así siempre ves
+                        información real y actualizada, sin datos desfasados.
                     </p>
 
                 </section>

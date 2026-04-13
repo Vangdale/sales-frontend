@@ -27,7 +27,7 @@ const MetacriticCarousel = (props) => {
                     {games.map((game) => (
                         <div className="embla__slide" key={game.id}>
                             <div className="embla__slide__number">
-                                <DealCard  deal={game}/>
+                                <DealCard  key={game.id} deal={game}/>
                             </div>
                         </div>
                     ))}

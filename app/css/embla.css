@@ -3,26 +3,20 @@
 .embla {
     max-width: 72rem;
     margin: auto;
-    --slide-height: 26rem;
     --slide-spacing: 1rem;
-    --slide-size: 30%;
+    --slide-size: 28%;   /* 3 cards y pico visibles en desktop */
 }
 
-@media (max-width: 768px) {
-    .embla {
-        --slide-size: 80%;
-    }
+@media (max-width: 640px) {
+    .embla { --slide-size: 78%; }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-    .embla {
-        --slide-size: 45%;
-    }
+@media (min-width: 641px) and (max-width: 1024px) {
+    .embla { --slide-size: 44%; }
 }
 
 .embla__viewport {
     overflow: hidden;
-    /* Subtle fade on the right edge */
     mask-image: linear-gradient(to right, transparent 0%, black 4%, black 92%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 92%, transparent 100%);
 }
@@ -31,7 +25,7 @@
     display: flex;
     touch-action: pan-y pinch-zoom;
     margin-left: calc(var(--slide-spacing) * -1);
-    align-items: stretch;
+    align-items: stretch; /* todos los slides tienen la misma altura */
 }
 
 .embla__slide {
@@ -40,15 +34,18 @@
     padding-left: var(--slide-spacing);
 }
 
-/* The inner wrapper — height is driven by DealCard itself */
+/*
+ * El wrapper interno NO tiene altura fija.
+ * La card más alta del grupo marca la altura de toda la fila.
+ * Cada card ocupa el 100% de esa altura con flex-grow.
+ */
 .embla__slide__number {
-    height: var(--slide-height);
     display: flex;
     flex-direction: column;
+    height: 100%; /* hereda la altura del slide, que viene de align-items:stretch */
 }
 
-/* Make DealCard fill the slide height */
 .embla__slide__number > * {
-    flex: 1;
-    height: 100%;
+    flex: 1;      /* la DealCard crece para llenar el espacio */
+    min-height: 0;
 }

@@ -1,9 +1,50 @@
 "use client";
 
+// ── Mapa completo de tiendas CheapShark ──────────────────────────────────────
+// Fuente: https://www.cheapshark.com/api/1.0/stores
+// Actualizado: 2025. Para refrescar: fetch('https://www.cheapshark.com/api/1.0/stores')
+const STORE_MAP = {
+    "1":  "Steam",
+    "2":  "GamersGate",
+    "3":  "GreenManGaming",
+    "4":  "Amazon",
+    "5":  "GameStop",
+    "6":  "Direct2Drive",
+    "7":  "GOG",
+    "8":  "Origin",          // ahora EA App
+    "9":  "Get Games",
+    "10": "Shiny Loot",
+    "11": "Humble Store",
+    "12": "Desura",
+    "13": "Uplay",           // ahora Ubisoft Connect
+    "14": "IndieGameStand",
+    "15": "Fanatical",       // antes Bundle Stars
+    "16": "Gamer's Gate",
+    "17": "WinGameStore",
+    "18": "FunStock",
+    "19": "GameBillet",
+    "20": "Voidu",
+    "21": "Epic Games Store",
+    "22": "Razer Game Store",
+    "23": "Gamesplanet",
+    "24": "Gamesload",
+    "25": "2Game",
+    "26": "IndieGala",
+    "27": "Gamesplanet",
+    "28": "AllYouPlay",
+    "29": "DLGamer",
+    "30": "Noctre",
+    "31": "DreamGame",
+    "32": "Magnetic Pool",   // puede estar inactivo
+    "33": "WinGameStore",
+    "34": "Playfield",
+    "35": "ImperialGames",
+    "36": "Allyouplay",
+};
+
 export default function DealCard({ deal }) {
     const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? process.env.NEXT_TEST_API_URL ?? "";
 
-    // Calcular descuento si no viene en el JSON
     const discount =
         deal.discountPercent ??
         (deal.original_price && deal.price
@@ -12,12 +53,17 @@ export default function DealCard({ deal }) {
 
     const score = deal.metacriticScore && deal.metacriticScore > 0 ? deal.metacriticScore : null;
 
+    // Nombre de la tienda — busca en el mapa, fallback al store_id raw
+    const storeName = deal.store_id
+        ? (STORE_MAP[String(deal.store_id)] ?? `Tienda ${deal.store_id}`)
+        : null;
+
     const scoreColor =
         score >= 85
             ? { text: "#34d399", ring: "rgba(16,185,129,0.4)", bg: "rgba(16,185,129,0.1)" }
             : score >= 70
-                ? { text: "#fbbf24", ring: "rgba(251,191,36,0.4)", bg: "rgba(251,191,36,0.1)" }
-                : { text: "#f87171", ring: "rgba(248,113,113,0.4)", bg: "rgba(248,113,113,0.1)" };
+            ? { text: "#fbbf24", ring: "rgba(251,191,36,0.4)", bg: "rgba(251,191,36,0.1)" }
+            : { text: "#f87171", ring: "rgba(248,113,113,0.4)", bg: "rgba(248,113,113,0.1)" };
 
     return (
         <div
@@ -42,18 +88,26 @@ export default function DealCard({ deal }) {
                 e.currentTarget.style.boxShadow = "none";
             }}
         >
-            {/* ── Image hero 16:9 ── */}
-            <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#000", flexShrink: 0 }}>
+            {/* ── Imagen 16:9 ── */}
+            <div style={{
+                position: "relative",
+                width: "100%",
+                aspectRatio: "16/9",
+                overflow: "hidden",
+                background: "#000",
+                flexShrink: 0,
+            }}>
                 <img
                     src={deal.imageUrl}
                     alt={deal.title}
                     style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
+                <div style={{
+                    position: "absolute", inset: 0,
+                    background: "linear-gradient(to top, #0f0f13 0%, rgba(15,15,19,0.1) 45%, transparent 100%)"
+                }} />
 
-                {/* Gradient overlay */}
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0f0f13 0%, rgba(15,15,19,0.1) 45%, transparent 100%)" }} />
-
-                {/* Discount badge */}
+                {/* Badge descuento */}
                 {discount > 0 && (
                     <div style={{
                         position: "absolute", top: 10, left: 10,
@@ -66,7 +120,7 @@ export default function DealCard({ deal }) {
                     </div>
                 )}
 
-                {/* Metacritic score */}
+                {/* Badge Metacritic */}
                 {score && (
                     <div style={{
                         position: "absolute", top: 10, right: 10,
@@ -78,9 +132,7 @@ export default function DealCard({ deal }) {
                     }}>
                         <img src="/Metacritic_M.png" alt="Metacritic" style={{ width: 14, height: 14 }} />
                         <span style={{
-                            color: scoreColor.text,
-                            fontSize: 13,
-                            fontWeight: 900,
+                            color: scoreColor.text, fontSize: 13, fontWeight: 900,
                             textShadow: "1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000",
                         }}>
                             {score}
@@ -90,9 +142,9 @@ export default function DealCard({ deal }) {
             </div>
 
             {/* ── Body ── */}
-            <div style={{ padding: "14px 14px 16px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+            <div style={{ padding: "14px 14px 16px", display: "flex", flexDirection: "column", gap: 6, flex: 1 }}>
 
-                {/* Title */}
+                {/* Título */}
                 <h2 style={{
                     fontSize: 13, fontWeight: 700, lineHeight: 1.4,
                     color: "rgba(255,255,255,0.88)",
@@ -105,7 +157,31 @@ export default function DealCard({ deal }) {
                     {deal.title}
                 </h2>
 
-                {/* Prices */}
+                {/* ── Nombre de la tienda ── */}
+                {storeName && (
+                    <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                        {/* Punto decorativo */}
+                        <span style={{
+                            width: 4, height: 4, borderRadius: "50%",
+                            background: "rgba(255,255,255,0.2)",
+                            flexShrink: 0,
+                            display: "inline-block",
+                        }} />
+                        <span style={{
+                            fontSize: 11,
+                            color: "rgba(255,255,255,0.28)",
+                            fontWeight: 500,
+                            letterSpacing: "0.02em",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                        }}>
+                            {storeName}
+                        </span>
+                    </div>
+                )}
+
+                {/* Precios */}
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginTop: "auto" }}>
                     {deal.original_price && (
                         <span style={{ color: "rgba(255,255,255,0.28)", fontSize: 12, textDecoration: "line-through" }}>
@@ -117,7 +193,7 @@ export default function DealCard({ deal }) {
                     </span>
                 </div>
 
-                {/* CTA */}
+                {/* Botón CTA */}
                 <a
                     href={`${API_BASE}/r/${deal.redirect_slug}`}
                     target="_blank"
@@ -129,8 +205,8 @@ export default function DealCard({ deal }) {
                         borderRadius: 10,
                         background: "#10b981",
                         color: "#000",
-                        fontSize: 14,
-                        fontWeight: 700,
+                        fontSize: 12,
+                        fontWeight: 900,
                         textDecoration: "none",
                         letterSpacing: "0.02em",
                         transition: "background 0.2s",

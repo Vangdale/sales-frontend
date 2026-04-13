@@ -3,7 +3,7 @@
 import DealsExplorer from "../components/DealsExplorer";
 
 async function getDeals() {
-    const res = await fetch(`${process.env.NEXT_TEST_API_URL}/api/deals`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/deals`, {
         next: { revalidate: 60 },
     });
     if (!res.ok) throw new Error("Error fetching deals");

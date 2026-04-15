@@ -9,6 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="es">
+            <head>
+                <meta name='impact-site-verification' value='712ab413-5b36-4af2-86a4-ecd72893707f'></meta>
+            </head>
             <body className="bg-[#09090d]">
                 {children}
             </body>

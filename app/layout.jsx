@@ -1,5 +1,7 @@
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
+import { LanguageProvider } from "./components/LanguageProvider"
+import LanguageSwitcher from "./components/LanguageSwitcher"
 
 export const metadata = {
     title: "Ofertas de Videojuegos",
@@ -13,7 +15,11 @@ export default function RootLayout({ children }) {
                 <meta name='impact-site-verification' value='712ab413-5b36-4af2-86a4-ecd72893707f'></meta>
             </head>
             <body className="bg-[#09090d]">
-                {children}
+                <LanguageProvider>
+                    <LanguageSwitcher />
+                    {children}
+                </LanguageProvider>
+                <Analytics />
             </body>
         </html>
     );

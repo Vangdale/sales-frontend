@@ -1,6 +1,6 @@
 "use client";
 
-import DealCard from "./DealCard";
+import DealsExplorer from "./DealsExplorer";
 import { useLang } from "./LanguageProvider";
 
 export default function OfertasSteamContent({ deals }) {
@@ -10,6 +10,15 @@ export default function OfertasSteamContent({ deals }) {
     const strong = { color: "rgba(255,255,255,0.6)" };
 
     return (
+        <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://juegosbaratospc.com" },
+                { "@type": "ListItem", "position": 2, "name": "Ofertas PC esta semana", "item": "https://juegosbaratospc.com/ofertas-steam" },
+            ],
+        })}} />
         <main style={{
             minHeight: "100vh", background: "#09090d", color: "white",
             fontFamily: "'Inter', system-ui, sans-serif",
@@ -78,10 +87,7 @@ export default function OfertasSteamContent({ deals }) {
                     </div>
                 </header>
 
-                {/* Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
-                    {deals.map((deal) => <DealCard key={deal.id} deal={deal} />)}
-                </div>
+                <DealsExplorer deals={deals} />
 
                 {/* FAQ */}
                 <section aria-label="FAQ" style={{
@@ -125,5 +131,6 @@ export default function OfertasSteamContent({ deals }) {
                 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
             `}</style>
         </main>
+        </>
     );
 }

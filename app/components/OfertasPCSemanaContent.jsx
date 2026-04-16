@@ -10,6 +10,15 @@ export default function OfertasPCSemanaContent({ deals }) {
     const strong = { color: "rgba(255,255,255,0.6)" };
 
     return (
+        <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://juegosbaratospc.com" },
+                { "@type": "ListItem", "position": 2, "name": "Todas las ofertas PC", "item": "https://juegosbaratospc.com/ofertas-pc-semana" },
+            ],
+        })}} />
         <main style={{
             minHeight: "100vh", background: "#09090d", color: "white",
             fontFamily: "'Inter', system-ui, sans-serif",
@@ -116,5 +125,6 @@ export default function OfertasPCSemanaContent({ deals }) {
                 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
             `}</style>
         </main>
+        </>
     );
 }

@@ -10,6 +10,14 @@ export default function OfertasSteamContent({ deals }) {
     const strong = { color: "rgba(255,255,255,0.6)" };
 
     return (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://juegosbaratospc.com" },
+                { "@type": "ListItem", "position": 2, "name": "Ofertas PC esta semana", "item": "https://juegosbaratospc.com/ofertas-steam" },
+            ],
+        })}} />
         <main style={{
             minHeight: "100vh", background: "#09090d", color: "white",
             fontFamily: "'Inter', system-ui, sans-serif",

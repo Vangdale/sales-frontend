@@ -84,7 +84,7 @@ export default function HomeContent({ data }) {
                     }}>
                         {h.ctaPrimary}
                     </Link>
-                    <Link href="/juegos-menos-de-5-euros" style={{
+                    <Link href="/juegos-gratis-pc" style={{
                         padding: "14px 24px", background: "rgba(255,255,255,0.04)",
                         color: "rgba(255,255,255,0.65)", fontWeight: 600, fontSize: 15,
                         borderRadius: 12, textDecoration: "none",
@@ -126,7 +126,7 @@ export default function HomeContent({ data }) {
 
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
                     {[
-                        { href: "/juegos-menos-de-5-euros", icon: "💰", title: h.cat1title, desc: h.cat1desc, accent: true },
+                        { href: "/juegos-gratis-pc", icon: "🎁", title: h.cat1title, desc: h.cat1desc, accent: true },
                         { href: "/ofertas-pc-semana", icon: "🔥", title: h.cat2title, desc: h.cat2desc, accent: false },
                         { href: "/ofertas-steam", icon: "🎮", title: h.cat3title, desc: h.cat3desc, accent: false },
                     ].map(({ href, icon, title, desc, accent }) => (

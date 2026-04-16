@@ -9,14 +9,16 @@ async function getHomeData() {
 }
 
 const BASE_URL = "https://juegosbaratospc.com";
+const OG_TITLE = "Mejores ofertas de videojuegos | Steam y 15+ tiendas";
+const OG_DESC = "Encuentra las mejores ofertas de videojuegos para PC. Compara precios automáticamente en Steam y más de 15 tiendas verificadas.";
 
 export const metadata = {
-    title: "Ofertas de Videojuegos | Compara precios en Steam y 15+ tiendas",
-    description: "Encuentra las mejores ofertas de videojuegos para PC. Compara precios automáticamente en Steam y más de 15 tiendas verificadas.",
+    title: OG_TITLE,
+    description: OG_DESC,
     alternates: { canonical: BASE_URL },
     openGraph: {
-        title: "Ofertas de Videojuegos | Compara precios en Steam y 15+ tiendas",
-        description: "Encuentra las mejores ofertas de videojuegos para PC. Compara precios automáticamente en Steam y más de 15 tiendas verificadas.",
+        title: OG_TITLE,
+        description: OG_DESC,
         url: BASE_URL,
         siteName: "OfertasVideojuegos",
         type: "website",
@@ -25,8 +27,8 @@ export const metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Ofertas de Videojuegos | Compara precios en Steam y 15+ tiendas",
-        description: "Encuentra las mejores ofertas de videojuegos para PC. Compara precios automáticamente en Steam y más de 15 tiendas verificadas.",
+        title: OG_TITLE,
+        description: OG_DESC,
         images: ["https://juegosbaratospc.com/og-image.png"],
     },
 };

@@ -31,7 +31,7 @@ export default function OfertasPCSemanaContent({ deals }) {
                 pointerEvents: "none", zIndex: 0,
             }} />
 
-            <div style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 32px 80px", position: "relative", zIndex: 1 }}>
+            <div className="page-content" style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 32px 80px", position: "relative", zIndex: 1 }}>
 
                 {/* Breadcrumb */}
                 <nav aria-label="Breadcrumb" style={{ marginBottom: 32 }}>

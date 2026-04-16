@@ -39,7 +39,7 @@ export default function HomeContent({ data }) {
             }} />
 
             {/* ── HERO ── */}
-            <section style={{
+            <section className="hero-section" style={{
                 position: "relative", zIndex: 1, width: "100%", maxWidth: 900,
                 padding: "120px 32px 80px", textAlign: "center",
                 display: "flex", flexDirection: "column", alignItems: "center", gap: 24,
@@ -116,7 +116,7 @@ export default function HomeContent({ data }) {
             </section>
 
             {/* ── CATEGORÍAS ── */}
-            <section style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1100, padding: "20px 32px 40px" }}>
+            <section className="section-pad" style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1100, padding: "20px 32px 40px" }}>
                 <p style={{ textAlign: "center", color: "#10b981", fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>
                     {h.categoriesLabel}
                 </p>
@@ -124,7 +124,7 @@ export default function HomeContent({ data }) {
                     {h.categoriesTitle}
                 </h2>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+                <div className="grid-3col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
                     {[
                         { href: "/juegos-gratis-pc", icon: "🎁", title: h.cat1title, desc: h.cat1desc, accent: true },
                         { href: "/ofertas-pc-semana", icon: "🔥", title: h.cat2title, desc: h.cat2desc, accent: false },
@@ -150,7 +150,7 @@ export default function HomeContent({ data }) {
             </section>
 
             {/* ── CAROUSEL ── */}
-            <section style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1100, padding: "20px 32px 40px" }}>
+            <section className="section-pad" style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1100, padding: "20px 32px 40px" }}>
                 <p style={{ textAlign: "center", color: "#10b981", fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>
                     {h.nowOnSale}
                 </p>
@@ -161,8 +161,8 @@ export default function HomeContent({ data }) {
             </section>
 
             {/* ── BENEFICIOS ── */}
-            <section style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1100, padding: "20px 32px 60px" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+            <section className="section-pad" style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1100, padding: "20px 32px 60px" }}>
+                <div className="grid-3col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
                     {[
                         { icon: "🔄", title: h.ben1title, desc: h.ben1desc },
                         { icon: "🛒", title: h.ben2title, desc: h.ben2desc },
@@ -183,7 +183,7 @@ export default function HomeContent({ data }) {
             </section>
 
             {/* ── SEO ── */}
-            <section style={{
+            <section className="section-pad" style={{
                 position: "relative", zIndex: 1, width: "100%", maxWidth: 760,
                 padding: "40px 32px 60px", borderTop: "1px solid rgba(255,255,255,0.05)",
             }}>

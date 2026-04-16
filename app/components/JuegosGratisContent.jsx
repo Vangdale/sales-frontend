@@ -30,7 +30,7 @@ export default function JuegosGratisContent({ deals }) {
                 pointerEvents: "none", zIndex: 0,
             }} />
 
-            <div style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 32px 80px", position: "relative", zIndex: 1 }}>
+            <div className="page-content" style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 32px 80px", position: "relative", zIndex: 1 }}>
 
                 {/* Breadcrumb */}
                 <nav aria-label="Breadcrumb" style={{ marginBottom: 32 }}>
@@ -93,7 +93,7 @@ export default function JuegosGratisContent({ deals }) {
                         {p.noDeals}
                     </div>
                 ) : (
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+                    <div className="grid-4col" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
                         {deals.map((deal) => <DealCard key={deal.id} deal={deal} />)}
                     </div>
                 )}

@@ -10,6 +10,7 @@ export default function OfertasPCSemanaContent({ deals }) {
     const strong = { color: "rgba(255,255,255,0.6)" };
 
     return (
+        <>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -124,5 +125,6 @@ export default function OfertasPCSemanaContent({ deals }) {
                 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
             `}</style>
         </main>
+        </>
     );
 }

@@ -9,6 +9,7 @@ export default function JuegosMenos5Content({ deals }) {
     const c = t.common;
 
     return (
+        <>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -130,5 +131,6 @@ export default function JuegosMenos5Content({ deals }) {
                 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
             `}</style>
         </main>
+        </>
     );
 }

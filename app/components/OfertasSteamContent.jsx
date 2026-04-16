@@ -1,6 +1,6 @@
 "use client";
 
-import DealCard from "./DealCard";
+import DealsExplorer from "./DealsExplorer";
 import { useLang } from "./LanguageProvider";
 
 export default function OfertasSteamContent({ deals }) {
@@ -78,10 +78,7 @@ export default function OfertasSteamContent({ deals }) {
                     </div>
                 </header>
 
-                {/* Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
-                    {deals.map((deal) => <DealCard key={deal.id} deal={deal} />)}
-                </div>
+                <DealsExplorer deals={deals} />
 
                 {/* FAQ */}
                 <section aria-label="FAQ" style={{

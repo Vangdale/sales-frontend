@@ -1,5 +1,10 @@
 //este archivo debe llamar a api ...deals para montar las ofertas
+import { redirect } from "next/navigation";
 import DealCard from "../components/DealCard";
+
+export const metadata = {
+    robots: { index: false, follow: false },
+};
 
 async function getDeals() {
     //const res = await fetch("http://localhost:3000/api/deals", {

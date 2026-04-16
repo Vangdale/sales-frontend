@@ -4,6 +4,7 @@ import { LanguageProvider } from "./components/LanguageProvider"
 import LanguageSwitcher from "./components/LanguageSwitcher"
 
 export const metadata = {
+    metadataBase: new URL("https://juegosbaratospc.com"),
     title: "Ofertas de Videojuegos",
     description: "Las mejores ofertas de videojuegos",
 };

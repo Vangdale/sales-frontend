@@ -32,7 +32,39 @@ export const metadata = {
     },
 };
 
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "¿Cómo funcionan las ofertas semanales de juegos para PC?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Las tiendas digitales como Steam, Fanatical o Humble Store publican descuentos nuevos cada semana, a veces coincidiendo con lanzamientos o eventos especiales. Los descuentos pueden llegar al 90% en títulos populares." },
+        },
+        {
+            "@type": "Question",
+            "name": "¿Cuáles son las mejores épocas para comprar juegos de PC baratos?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Las rebajas más grandes del año suelen ocurrir durante el Steam Summer Sale (junio-julio), el Steam Winter Sale (diciembre-enero), el Black Friday (noviembre) y el Steam Autumn Sale. Fuera de estas fechas, muchas tiendas mantienen ofertas semanales con descuentos de hasta el 90% en títulos AAA e indie." },
+        },
+        {
+            "@type": "Question",
+            "name": "Consejos para sacar el máximo partido a las ofertas",
+            "acceptedAnswer": { "@type": "Answer", "text": "Revisa esta página al inicio de la semana — los mejores descuentos aparecen los lunes. Fíjate en el score de Metacritic junto al precio para elegir calidad garantizada. Compara el descuento actual con el precio histórico antes de comprar. Añade esta página a favoritos para no perderte ninguna oferta flash." },
+        },
+        {
+            "@type": "Question",
+            "name": "¿Con qué frecuencia se actualizan los precios?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Los precios se actualizan automáticamente varias veces al día para reflejar cambios en descuentos, promociones flash o nuevas campañas semanales. Así siempre ves información real y actualizada, sin datos desfasados." },
+        },
+    ],
+};
+
 export default async function OfertasSteam() {
     const deals = await getDeals();
-    return <OfertasSteamContent deals={deals} />;
+    return (
+        <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+            <OfertasSteamContent deals={deals} />
+        </>
+    );
 }

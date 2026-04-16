@@ -21,10 +21,10 @@ export default function sitemap() {
             priority: 0.9,
         },
         {
-            url: `${baseUrl}/juegos-menos-de-5-euros`,
+            url: `${baseUrl}/juegos-gratis-pc`,
             lastModified: new Date(),
             changeFrequency: "daily",
-            priority: 0.8,
+            priority: 0.9,
         },
     ];
 }

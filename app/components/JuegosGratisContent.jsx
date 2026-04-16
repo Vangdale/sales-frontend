@@ -3,9 +3,9 @@
 import DealCard from "./DealCard";
 import { useLang } from "./LanguageProvider";
 
-export default function JuegosMenos5Content({ deals }) {
+export default function JuegosGratisContent({ deals }) {
     const { t } = useLang();
-    const p = t.cheapGames;
+    const p = t.freeGames;
     const c = t.common;
 
     return (
@@ -15,7 +15,7 @@ export default function JuegosMenos5Content({ deals }) {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://juegosbaratospc.com" },
-                { "@type": "ListItem", "position": 2, "name": "Juegos por menos de 5€", "item": "https://juegosbaratospc.com/juegos-menos-de-5-euros" },
+                { "@type": "ListItem", "position": 2, "name": "Juegos gratis para PC", "item": "https://juegosbaratospc.com/juegos-gratis-pc" },
             ],
         })}} />
         <main style={{
@@ -56,7 +56,7 @@ export default function JuegosMenos5Content({ deals }) {
                             background: "#34d399", display: "inline-block",
                             animation: "pulse 2s infinite",
                         }} />
-                        {deals.length} {c.dealsNow}
+                        {deals.length} {c.freeNow}
                     </div>
 
                     <h1 style={{
@@ -88,15 +88,32 @@ export default function JuegosMenos5Content({ deals }) {
                 </header>
 
                 {/* Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
-                    {deals.map((deal) => <DealCard key={deal.id} deal={deal} />)}
-                </div>
+                {deals.length === 0 ? (
+                    <div style={{ textAlign: "center", padding: "80px 0", color: "rgba(255,255,255,0.25)", fontSize: 15 }}>
+                        {p.noDeals}
+                    </div>
+                ) : (
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+                        {deals.map((deal) => <DealCard key={deal.id} deal={deal} />)}
+                    </div>
+                )}
 
                 {/* FAQ */}
                 <section aria-label="FAQ" style={{
                     marginTop: 80, paddingTop: 48,
                     borderTop: "1px solid rgba(255,255,255,0.06)", maxWidth: 760,
                 }}>
+                    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": [
+                            { "@type": "Question", "name": p.faq1title, "acceptedAnswer": { "@type": "Answer", "text": p.faq1body } },
+                            { "@type": "Question", "name": p.faq2title, "acceptedAnswer": { "@type": "Answer", "text": p.faq2body } },
+                            { "@type": "Question", "name": p.faq3title, "acceptedAnswer": { "@type": "Answer", "text": p.faq3body } },
+                            { "@type": "Question", "name": p.faq4title, "acceptedAnswer": { "@type": "Answer", "text": p.faq4body } },
+                        ],
+                    })}} />
+
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: "rgba(255,255,255,0.85)", marginBottom: 12, marginTop: 0, letterSpacing: "-0.01em" }}>
                         {p.faq1title}
                     </h2>
@@ -114,9 +131,9 @@ export default function JuegosMenos5Content({ deals }) {
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: "rgba(255,255,255,0.85)", marginBottom: 12, marginTop: 0, letterSpacing: "-0.01em" }}>
                         {p.faq3title}
                     </h2>
-                    <ul style={{ color: "rgba(255,255,255,0.38)", fontSize: 14, lineHeight: 2, paddingLeft: 20, marginBottom: 32, marginTop: 0 }}>
-                        {p.tips.map((tip, i) => <li key={i}>{tip}</li>)}
-                    </ul>
+                    <p style={{ color: "rgba(255,255,255,0.38)", fontSize: 14, lineHeight: 1.8, marginBottom: 32, marginTop: 0 }}>
+                        {p.faq3body}
+                    </p>
 
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: "rgba(255,255,255,0.85)", marginBottom: 12, marginTop: 0, letterSpacing: "-0.01em" }}>
                         {p.faq4title}

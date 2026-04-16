@@ -56,9 +56,10 @@ export default function DealCard({ deal }) {
 
     const score = deal.metacriticScore && deal.metacriticScore > 0 ? deal.metacriticScore : null;
 
-    // Nombre de la tienda — busca en el mapa, fallback al store_id raw
-    const storeName = deal.store_id
-        ? (STORE_MAP[String(deal.store_id)] ?? `Tienda ${deal.store_id}`)
+    // Nombre de la tienda — acepta store_id (deals API) o storeID (home API)
+    const storeId = deal.store_id ?? deal.storeID ?? null;
+    const storeName = storeId
+        ? (STORE_MAP[String(storeId)] ?? `Tienda ${storeId}`)
         : null;
 
     const scoreColor =

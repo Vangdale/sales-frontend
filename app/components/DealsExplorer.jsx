@@ -185,7 +185,7 @@ export default function DealsExplorer({ deals }) {
                     )}
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32 }}>
+                <div className="grid-filters" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32 }}>
 
                     {/* Precio */}
                     <div>
@@ -232,7 +232,7 @@ export default function DealsExplorer({ deals }) {
                 </div>
 
                 {/* Ordenar por */}
-                <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.05)", display: "flex", alignItems: "center", gap: 12 }}>
+                <div className="sort-row" style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.05)", display: "flex", alignItems: "center", gap: 12 }}>
                     <span style={{ ...sectionLabel, marginBottom: 0, whiteSpace: "nowrap" }}>{f.sortBy}</span>
                     {[
                         { value: "discount", label: f.highestDiscount },
@@ -281,7 +281,7 @@ export default function DealsExplorer({ deals }) {
                     </button>
                 </div>
             ) : (
-                <div style={{
+                <div className="grid-4col" style={{
                     display: "grid",
                     gridTemplateColumns: "repeat(4, 1fr)",
                     gap: 16,

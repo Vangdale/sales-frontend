@@ -21,11 +21,13 @@ export const metadata = {
         siteName: "OfertasVideojuegos",
         type: "website",
         locale: "es_ES",
+        images: [{ url: "https://juegosbaratospc.com/og-image.png", width: 1200, height: 630 }],
     },
     twitter: {
         card: "summary_large_image",
         title: "Ofertas de Videojuegos | Compara precios en Steam y 15+ tiendas",
         description: "Encuentra las mejores ofertas de videojuegos para PC. Compara precios automáticamente en Steam y más de 15 tiendas verificadas.",
+        images: ["https://juegosbaratospc.com/og-image.png"],
     },
 };
 

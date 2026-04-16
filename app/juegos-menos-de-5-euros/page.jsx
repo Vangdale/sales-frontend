@@ -23,11 +23,13 @@ export const metadata = {
         siteName: "OfertasVideojuegos",
         type: "website",
         locale: "es_ES",
+        images: [{ url: "https://juegosbaratospc.com/og-image.png", width: 1200, height: 630 }],
     },
     twitter: {
         card: "summary_large_image",
         title: "Juegos PC por menos de 5€ | Mejores ofertas y chollos Steam hoy",
         description: "Encuentra los mejores juegos de PC por menos de 5€ con descuentos de hasta el 95%.",
+        images: ["https://juegosbaratospc.com/og-image.png"],
     },
 };
 

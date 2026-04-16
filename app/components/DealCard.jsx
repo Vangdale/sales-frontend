@@ -1,5 +1,7 @@
 "use client";
 
+import { useLang } from "./LanguageProvider";
+
 // ── Mapa completo de tiendas CheapShark ──────────────────────────────────────
 // Fuente: https://www.cheapshark.com/api/1.0/stores
 // Actualizado: 2025. Para refrescar: fetch('https://www.cheapshark.com/api/1.0/stores')
@@ -43,6 +45,7 @@ const STORE_MAP = {
 };
 
 export default function DealCard({ deal }) {
+    const { t } = useLang();
     const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? process.env.NEXT_TEST_API_URL ?? "";
 
     const discount =
@@ -215,7 +218,7 @@ export default function DealCard({ deal }) {
                     onMouseEnter={e => e.currentTarget.style.background = "#34d399"}
                     onMouseLeave={e => e.currentTarget.style.background = "#10b981"}
                 >
-                    Comprar ahora
+                    {t.common.buyNow}
                 </a>
             </div>
         </div>

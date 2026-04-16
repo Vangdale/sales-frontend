@@ -8,10 +8,26 @@ async function getDeals() {
     return res.json();
 }
 
+const PAGE_URL = "https://juegosbaratospc.com/ofertas-steam";
+
 export const metadata = {
     title: "Ofertas PC esta semana | Mejores descuentos en juegos ahora mismo",
     description:
         "Las mejores ofertas de juegos para PC actualizadas esta semana. Descuentos de hasta el 90% en Steam y tiendas verificadas. Compara precios automáticamente.",
+    alternates: { canonical: PAGE_URL },
+    openGraph: {
+        title: "Ofertas PC esta semana | Mejores descuentos en juegos ahora mismo",
+        description: "Las mejores ofertas de juegos para PC actualizadas esta semana. Descuentos de hasta el 90% en Steam y tiendas verificadas. Compara precios automáticamente.",
+        url: PAGE_URL,
+        siteName: "OfertasVideojuegos",
+        type: "website",
+        locale: "es_ES",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Ofertas PC esta semana | Mejores descuentos en juegos ahora mismo",
+        description: "Las mejores ofertas de juegos para PC actualizadas esta semana. Descuentos de hasta el 90% en Steam y tiendas verificadas.",
+    },
 };
 
 export default async function OfertasSteam() {
